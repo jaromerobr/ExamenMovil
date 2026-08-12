@@ -94,6 +94,9 @@ class _ListaLugaresScreenState extends State<ListaLugaresScreen> {
                         title: Text(lugar.nombre),
                         subtitle: Text(lugar.descripcion),
                         trailing: FavoritoBoton(
+                          // Al filtrar cambia el orden de la lista, la key evita
+                          // que el estado del corazon se quede en otro lugar.
+                          key: ValueKey(lugar.id),
                           favoritoInicial: lugar.favorito,
                           onToggle: () {
                             context.read<LugaresProvider>().toggleFavorito(lugar);
